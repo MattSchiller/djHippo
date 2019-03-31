@@ -32,9 +32,6 @@
             "@Pages/*": [
                 "./src/ts/Pages/*"
             ],
-            "@SimType/*": [
-                "./src/ts/SimType/*"
-            ],
             "@Helpers/*": [
                 "./src/ts/Helpers/*"
             ],
