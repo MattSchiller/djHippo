@@ -1,0 +1,43 @@
+@import "../variables";
+@import "../utility";
+
+@mixin getIndentCharacterContent($numChars) {
+    $char: ".";
+    $content: "";
+    @for $i from 0 to $numChars {
+        $content: $content + $char;
+    }
+    content: $content;
+}
+
+.indent {
+    &::after {
+        content: "..";
+    }
+}
+
+.ruler-mark {
+    &::after {
+        content: "  ";
+    }
+}
+
+.indent, .ruler-mark {
+    display: flex;
+    opacity: 0.17;
+    line-height: 0.75em;
+}
+
+.whole-line {
+    display: inline-flex;
+}
+
+.line-break {
+    @include dummy-rule();
+}
+
+.#{$sim-type-class} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

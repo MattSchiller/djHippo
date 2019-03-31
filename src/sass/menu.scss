@@ -1,0 +1,140 @@
+@import "variables";
+
+.tabs {
+    flex-grow: 6;
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.8vw;
+        font-weight: 600;
+    }
+
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    line-height: $menu-height + 0em;
+    list-style: none;
+    justify-content: center;
+
+    $border-radius: 0.25em;
+    border-radius: $border-radius $border-radius 0 0;
+
+    & li {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+
+        z-index: 1;
+
+        display: flex;
+        justify-content: inherit;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+
+        cursor: pointer;
+        transition: color 0.3s;
+        transition-timing-function: ease, cubic-bezier(0.7,0,0.3,1);
+
+        &.selected {
+            &:hover, &:focus  {
+                color: inherit;
+            }
+
+            &::after{
+                position: absolute;
+
+                border-radius: $border-radius $border-radius 0 0;
+                transform: translate3d(0,0,0);
+                height: 100%;
+            }
+        }
+
+        &::after {
+            content: '';
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 0.2em;
+
+            transition: background-color 0.3s transform 0.3s height 0.3s;
+            transition-timing-function: ease, cubic-bezier(0.7,0,0.3,1);
+            transform: translate3d(0,100%,0) translate3d(0,-3px,0);
+        }
+
+        img {
+            height: 0.8em;
+            width: 0.8em;
+
+            margin-left: -1.3em;
+            margin-right: 0.3em;
+        }
+    }
+
+    .theme-selector {
+        flex: 0 0 4em;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0.5em;
+        overflow: visible;
+
+        &.selected .theme-options {
+            max-height: 6em;    // UPDATE: Based on number of choices for smoothest animation
+        }
+    }
+}
+
+.theme-options {
+    background-color: purple;
+    position: absolute;
+    left: 0;
+    top: $menu-height + 0em;
+
+    width: auto;
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.25s;
+    transition-timing-function: ease, cubic-bezier(0.7,0,0.3,1);
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-start;
+    white-space: pre;
+
+    border: 2px solid transparent;
+
+    &.#{$sim-type-class} {
+        // Removing any styling the regular simType has that conflicts here for preview.
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+
+    &.selected {
+        border-color: red;
+    }
+}
+
+.theme-option-name {
+    width: 5em;
+}
+
+.theme-option-preview {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2em;
+    margin-right: 1em;
+
+    span {
+        font-size: 1em;
+    }
+}
