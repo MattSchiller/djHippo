@@ -10,7 +10,7 @@ import { Spinner } from "@Components/Spinner";
 import { AboutPage } from "@Pages/Pages";
 import { AboutComponent } from "@Components/About";
 
-class App extends React.PureComponent {
+export class App extends React.PureComponent {
     public componentWillMount() {
         this._initializePageNavigation();
     }
