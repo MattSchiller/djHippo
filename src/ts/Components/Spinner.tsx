@@ -2,7 +2,7 @@ import CSS from "@Sass/styles.scss";
 import React from "react";
 
 interface ISpinnerProps {
-    className: string;
+    className?: string;
 }
 
 export class Spinner extends React.PureComponent<ISpinnerProps> {

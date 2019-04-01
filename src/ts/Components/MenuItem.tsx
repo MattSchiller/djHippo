@@ -1,4 +1,3 @@
-import { Actions } from "@Redux/Actions";
 import { IPage } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
 import { history } from "@Helpers/History";
@@ -15,15 +14,12 @@ export class MenuItem extends React.PureComponent<IMenuItemProps> {
                 onClick={ this._onClick }
                 className={ this._getClassName() }
             >
-                <img src={ this.props.iconUrl } />
-                { this.props.pageTitle }
+                { this.props.title }
             </li >
         );
     }
 
-    private _getClassName(): string {
-        return this.props.isSelected ? CSS.selected : "";
-    }
+    private _getClassName = () => this.props.isSelected ? CSS.selected : "";
 
     private _onClick = () => history.push(this.props.pageId);
 }

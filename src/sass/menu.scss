@@ -1,0 +1,25 @@
+@import "variables";
+
+.tabs {
+    color: $color-theme-secondary;
+    background-color: $color-theme-primary;
+
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+
+    li {
+        cursor: pointer;
+        padding: 0.5em;
+
+        &:hover {
+            color: pink;
+        }
+    }
+}
+
+.selected {
+    background-color: $color-theme-secondary;
+    color: $color-theme-primary;
+}

@@ -1,63 +1,29 @@
-import { IThemeEnum } from "@Helpers/IThemeEnum";
-import { About } from "@Pages/About";
-import { Contact } from "@Pages/Contact";
-import { FunFactFriday } from "@Pages/FunFactFriday";
-import { Projects } from "@Pages/Projects";
-import { Resume } from "@Pages/Resume";
-import { IPage, IRawPage, IStore, IStoreContent, IStoreTheme } from "@Redux/Interfaces/IStore";
-import { IRawSimTypeContent, ISimTypeContent, ISimTypeStatus } from "@SimType/ISimTypeContent";
+import { IPage, IStore, IRawPage } from "@Redux/Interfaces/IStore";
+import { IPageConfig } from "@Redux/Interfaces/IPageConfigs";
+import { AboutPage } from "@Pages/Pages";
+import { typedFetch } from "@Helpers/Fetch";
 
 export const initialState = getInitialState();
 
 function getInitialState(): IStore {
     const pages: IPage[] = [
-        About,
-        Projects,
-        Contact,
-        Resume,
-        FunFactFriday,
-    ].map(cleanUpRawPage);
+        initializePage(AboutPage)
+    ];
 
-    const content: IStoreContent = {
-        activePageId: pages.length > 0 ? pages[0].pageId : "NULL",
+    const activePageId: string = pages[0].pageId;
+
+    return {
         pages,
-    };
-
-    const theme: IStoreTheme = {
-        activeTheme: IThemeEnum.DARK_PLUS,
-    };
-
-    return {
-        content,
-        theme,
+        activePageId,
     };
 }
 
-function cleanUpRawPage(page: IRawPage): IPage {
-    if (!page.simTypes)
-        return page as IPage;
-
-    const simTypes = page.simTypes.map(initializeSimTypeContent);
+function initializePage(rawPage: IRawPage): IPage {
+    const configUrl: string | undefined = rawPage.configUrl;
+    const fetchedConfig = configUrl ? typedFetch<IPageConfig>(configUrl) : undefined;
 
     return {
-        ...page,
-        simTypes
-    };
-}
-
-function initializeSimTypeContent(rawSimType: IRawSimTypeContent): ISimTypeContent {
-    return {
-        ...rawSimType,
-        contentIndex: 0,
-        textSegments: [],
-        status: getInitialSimTypeStatus()
-    };
-}
-
-function getInitialSimTypeStatus(): ISimTypeStatus {
-    return {
-        isBackspacing: false,
-        backspaceIterations: 0,
-        isQuoting: false
+        ...rawPage,
+        fetchedConfig,
     };
 }

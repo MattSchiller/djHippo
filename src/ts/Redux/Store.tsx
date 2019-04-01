@@ -1,35 +1,29 @@
-import { IThemeEnum } from "@Helpers/IThemeEnum";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
-import { contentReducer } from "@Redux/Reducers/contentReducer";
-import { themeReducer } from "@Redux/Reducers/themeReducer";
-import { createStore, Store, combineReducers } from "redux";
+import { pageReducer } from "@Redux/Reducers/pageReducer";
+import { createStore, Store } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 
 export const store: Store = createStore(
-    combineReducers({
-        content: contentReducer,
-        theme: themeReducer,
-    }),
+    pageReducer,
     devToolsEnhancer({})
 );
 
 export function getPages(): IPage[] {
-    return (store.getState() as IStore).content.pages;
+    return (store.getState() as IStore).pages;
 }
 
 export function getActivePageId(): string {
-    return (store.getState() as IStore).content.activePageId;
+    return (store.getState() as IStore).activePageId;
 }
 
 export function getActivePage(): IPage {
-    return getPages().filter((page: IPage) => page.pageId === getActivePageId())[0];
+    return getPageFromPageId(getActivePageId());
 }
 
 export function isValidPageId(pageId: string): boolean {
     return getPages().map(page => page.pageId).includes(pageId);
 }
 
-export function getActiveTheme(): IThemeEnum {
-    const state: IStore = store.getState();
-    return state.theme.activeTheme;
+export function getPageFromPageId(pageId: string): IPage {
+    return getPages().filter((page: IPage) => page.pageId === pageId)[0];
 }

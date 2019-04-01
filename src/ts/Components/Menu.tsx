@@ -1,12 +1,11 @@
 import { MenuItem } from "@Components/MenuItem";
-import { ThemeSelector } from "@Components/ThemeSelector";
-import { IPage, IStore, IActivePageProps, IStoreTheme } from "@Redux/Interfaces/IStore";
+import { IPage, IStore, IActivePageProps } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { getActiveTheme, getActivePageId, getPages } from "@Redux/Store";
+import { getActivePageId, getPages } from "@Redux/Store";
 
-interface IMenuProps extends IStoreTheme, IActivePageProps {
+interface IMenuProps extends IActivePageProps {
     items: IPage[];
 }
 
@@ -14,7 +13,6 @@ class Menu extends React.PureComponent<IMenuProps> {
     public render() {
         return (
             <nav className={ CSS.tabs }>
-                <ThemeSelector key={ "themeSelecter" } />
                 { this.props.items.map(this._renderMenuItem, this) }
             </nav>
         );
@@ -35,7 +33,6 @@ function mapStateToProps(state: IStore) {
     return {
         items: getPages(),
         activePageId: getActivePageId(),
-        activeTheme: getActiveTheme(),
     };
 }
 

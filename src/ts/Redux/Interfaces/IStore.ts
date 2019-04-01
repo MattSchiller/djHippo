@@ -1,17 +1,7 @@
-import { ISimTypeContent, IRawSimTypeContent } from "@SimType/ISimTypeContent";
-import { IThemeEnum } from "@Helpers/IThemeEnum";
+import { IPageConfig, IAboutConfig } from "@Redux/Interfaces/IPageConfigs";
 
-export interface IStore {
-    theme: IStoreTheme;
-    content: IStoreContent;
-}
-
-export interface IStoreContent extends IActivePageProps {
+export interface IStore extends IActivePageProps {
     pages: IPage[];
-}
-
-export interface IStoreTheme {
-    activeTheme: IThemeEnum;
 }
 
 export interface IActivePageProps {
@@ -20,15 +10,13 @@ export interface IActivePageProps {
 
 interface IBasePage {
     pageId: string;
-    pageTitle: string;
-    iconUrl: string;
-    language: string;
-}
-
-export interface IPage extends IBasePage {
-    simTypes?: ISimTypeContent[];
+    title: string;
 }
 
 export interface IRawPage extends IBasePage {
-    simTypes?: IRawSimTypeContent[];
+    configUrl?: string;
+}
+
+export interface IPage extends IBasePage {
+    fetchedConfig?: Promise<IPageConfig>
 }

@@ -1,27 +1,24 @@
 import { Menu } from "@Components/Menu";
-import { RotateMobile } from "@Components/RotateMobile";
-import { SimTypeContainer } from "@Components/SimTypeContainer";
 import { getTrimmedPath as getPageIdFromPath, history } from "@Helpers/History";
-import { getThemedClassName } from "@Helpers/Theming";
-import { FunFactFridayComponent } from "@Pages/FunFactFriday";
-import { ResumeComponent, resumePageId } from "@Pages/Resume";
 import { Actions } from "@Redux/Actions";
-import { IStoreTheme } from "@Redux/Interfaces/IStore";
-import { getActiveTheme, isValidPageId } from "@Redux/Store";
+import { isValidPageId, getPages, getPageFromPageId } from "@Redux/Store";
 import CSS from "@Sass/styles.scss";
 import { Location } from "history";
 import React from "react";
-import { connect } from "react-redux";
 import { Route, Router } from "react-router-dom";
+import { Spinner } from "@Components/Spinner";
+import { AboutPage } from "@Pages/Pages";
+import { AboutComponent } from "@Components/About";
 
-class App extends React.PureComponent<IStoreTheme> {
+class App extends React.PureComponent {
     public componentWillMount() {
-        this._initializeHistoryListener();
+        this._initializePageNavigation();
     }
 
-    private _initializeHistoryListener() {
+    private _initializePageNavigation() {
         history.listen((location: Location) => {
             const _inboundPageId = getPageIdFromPath(location);
+
             if (isValidPageId(_inboundPageId))
                 Actions.setActivePage({ pageId: _inboundPageId });
             else
@@ -34,34 +31,21 @@ class App extends React.PureComponent<IStoreTheme> {
         if (isValidPageId(inboundPageId))
             Actions.setActivePage({ pageId: inboundPageId });
         else
-            history.replace("/about");
+            history.replace(`/${getPages()[0].pageId}`);
     }
 
     public render() {
-        const simTypeUrls = "/(|index.html|about|contact|projects)";
+        const simTypeUrls = `/(|index.html|about|contact|projects)`;
         return (
-            <div className={ getThemedClassName(CSS.content) }>
+            <div >
                 <Menu key={ "menu" } />
                 <Router history={ history } >
                     <div>
                         <Route
-                            key={ "fff" }
-                            component={ FunFactFridayComponent }
-                        />
-                        <Route
-                            key={ "rotateMobile" }
-                            path={ simTypeUrls }
-                            component={ RotateMobile }
-                        />
-                        <Route
-                            key={ "content" }
-                            path={ simTypeUrls }
-                            component={ SimTypeContainer }
-                        />
-                        <Route
-                            key={ "resume" }
-                            path={ `/${resumePageId}` }
-                            component={ ResumeComponent }
+                            key={ "about" }
+                            path={ `/${AboutPage.pageId}` }
+                            component={ AboutComponent }
+                            props={ getPageFromPageId(AboutPage.pageId) }
                         />
                     </div>
                 </Router >
@@ -70,12 +54,3 @@ class App extends React.PureComponent<IStoreTheme> {
     }
 }
 
-// This is needed to trigger updates from theme changes.
-function mapStateToProps() {
-    return {
-        activeTheme: getActiveTheme(),
-    };
-}
-
-const ConnectedApp = connect(mapStateToProps)(App);
-export { ConnectedApp as App };
