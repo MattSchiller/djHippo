@@ -1,14 +1,11 @@
 import { Menu } from "@Components/Menu";
+import { AboutComponent } from "@Components/Pages/AboutPage";
+import { ListenComponent } from "@Components/Pages/ListenPage";
 import { getTrimmedPath as getPageIdFromPath, history } from "@Helpers/History";
 import { Actions } from "@Redux/Actions";
-import { isValidPageId, getPages, getPageFromPageId } from "@Redux/Store";
-import CSS from "@Sass/styles.scss";
+import { getPages, isValidPageId } from "@Redux/Store";
 import { Location } from "history";
 import React from "react";
-import { Route, Router } from "react-router-dom";
-import { Spinner } from "@Components/Spinner";
-import { AboutPage } from "@Pages/Pages";
-import { AboutComponent } from "@Components/About";
 
 export class App extends React.PureComponent {
     public componentWillMount() {
@@ -35,20 +32,11 @@ export class App extends React.PureComponent {
     }
 
     public render() {
-        const simTypeUrls = `/(|index.html|about|contact|projects)`;
         return (
             <div >
-                <Menu key={ "menu" } />
-                <Router history={ history } >
-                    <div>
-                        <Route
-                            key={ "about" }
-                            path={ `/${AboutPage.pageId}` }
-                            component={ AboutComponent }
-                            props={ getPageFromPageId(AboutPage.pageId) }
-                        />
-                    </div>
-                </Router >
+                <Menu />
+                <AboutComponent />
+                <ListenComponent />
             </div>
         );
     }

@@ -1,0 +1,13 @@
+.about-page {
+    white-space: pre-line;
+}
+
+.listen-page {
+    display: flex;
+    flex-direction: column;
+
+    iframe {
+        width: 100%;
+        height: 200px;
+    }
+}

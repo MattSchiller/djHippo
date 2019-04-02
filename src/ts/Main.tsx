@@ -3,7 +3,7 @@ import { store } from "@Redux/Store";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { renderTargetId } from "./Constants";
+import { renderTargetId } from "@Helpers/Constants";
 
 ReactDOM.render(
     <Provider store={ store }>
