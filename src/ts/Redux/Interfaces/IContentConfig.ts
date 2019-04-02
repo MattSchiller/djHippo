@@ -1,4 +1,4 @@
-export type IPageConfig = IAboutConfig | ISoundCloudConfig | IContactConfig | IUpcomingEventsConfig;
+export type IContentConfig = IAboutConfig | ISoundCloudConfig | IContactConfig | IUpcomingEventsConfig;
 
 export interface IAboutConfig {
     imageSrc: string;
@@ -27,4 +27,13 @@ export interface IUpcomingEvent {
     name: string;
     location: string;
     tickets: string;
+}
+
+export interface ISocialsConfig {
+    socials: ISocial[];
+}
+
+export interface ISocial {
+    icon: string;
+    link: string;
 }

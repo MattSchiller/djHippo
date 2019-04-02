@@ -1,6 +1,6 @@
 import React from "react";
 import { soundCloudUrlPrefix, soundCloudUrlSuffix } from "@Helpers/Constants";
-import { Spinner } from "@Components/Spinner";
+import { Spinner } from "@Components/Pages/Aux/Spinner";
 import CSS from "@Sass/styles.scss";
 
 interface ISoundCloudComponentProps {

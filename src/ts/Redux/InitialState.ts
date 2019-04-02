@@ -1,7 +1,7 @@
 import { typedFetch } from "@Helpers/Fetch";
-import { IPageConfig } from "@Redux/Interfaces/IPageConfigs";
+import { IContentConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IRawPage, IStore } from "@Redux/Interfaces/IStore";
-import { AboutPage, ContactPage, ListenPage, UpcomingEventsPage } from "@Redux/Pages";
+import { AboutPage, ContactPage, ListenPage, UpcomingEventsPage } from "@Redux/ContentConfigs";
 
 export const initialState = getInitialState();
 
@@ -23,7 +23,7 @@ function getInitialState(): IStore {
 
 function initializePage(rawPage: IRawPage): IPage {
     const configUrl: string | undefined = rawPage.configUrl;
-    const fetchedConfig = configUrl ? typedFetch<IPageConfig>(configUrl) : undefined;
+    const fetchedConfig = configUrl ? typedFetch<IContentConfig>(configUrl) : undefined;
 
     return {
         ...rawPage,

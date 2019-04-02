@@ -1,12 +1,12 @@
-import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
-import { IContactConfig, IContactEmail } from "@Redux/Interfaces/IPageConfigs";
+import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
+import { IContactConfig, IContactEmail } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
-import { ContactPage } from "@Redux/Pages";
+import { ContactPage } from "@Redux/ContentConfigs";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 
-class ContactComponent extends BaseConfigurablePage<IContactConfig> {
+class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
     constructor(props: any) {
         super(props);
 

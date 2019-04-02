@@ -1,9 +1,9 @@
-import { PageContentWrapper } from "@Components/Pages/PageContentWrapper";
-import { Spinner } from "@Components/Spinner";
+import { WrapWithSpinnerComponent } from "@Components/Pages/Aux/WrapWithSpinnerComponent";
+import { Spinner } from "@Components/Pages/Aux/Spinner";
 import { IPage } from "@Redux/Interfaces/IStore";
 import React from "react";
 
-export class BaseConfigurablePage<T> extends React.PureComponent<IPage, T> {
+export class BaseConfigurableComponent<T> extends React.PureComponent<IPage, T> {
     public componentWillMount() {
         if (!this.props.fetchedConfig) return;
 
@@ -15,13 +15,13 @@ export class BaseConfigurablePage<T> extends React.PureComponent<IPage, T> {
 
     public render() {
         return (
-            <PageContentWrapper wrappedPageId={ this.props.pageId }>
+            <WrapWithSpinnerComponent wrappedPageId={ this.props.pageId }>
                 {
                     this._renderCondition()
                         ? this._render()
                         : <Spinner />
                 }
-            </PageContentWrapper>
+            </WrapWithSpinnerComponent>
         );
     }
 

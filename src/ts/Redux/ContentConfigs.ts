@@ -1,4 +1,4 @@
-import { IRawPage } from "@Redux/Interfaces/IStore";
+import { IConfig, IRawPage } from "@Redux/Interfaces/IStore";
 
 export const AboutPage: IRawPage = {
     pageId: "about",
@@ -22,4 +22,8 @@ export const UpcomingEventsPage: IRawPage = {
     pageId: "upcoming",
     title: "Upcoming Events",
     configUrl: "configs/upcomingEvents.yaml",
+}
+
+export const Socials: IConfig = {
+    configUrl: "configs/socials.yaml",
 }

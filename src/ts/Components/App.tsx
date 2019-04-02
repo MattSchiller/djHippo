@@ -8,6 +8,7 @@ import { Location } from "history";
 import React from "react";
 import { ContactComponent } from "@Components/Pages/ContactPage";
 import { UpcomingEventsComponent } from "@Components/Pages/UpcomingEventsPage";
+import { SocialComponent } from "@Components/Social";
 
 export class App extends React.PureComponent {
     public componentWillMount() {
@@ -41,6 +42,7 @@ export class App extends React.PureComponent {
                 <ListenComponent />
                 <ContactComponent />
                 <UpcomingEventsComponent />
+                <SocialComponent />
             </div>
         );
     }

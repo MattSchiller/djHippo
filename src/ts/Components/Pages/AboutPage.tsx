@@ -1,12 +1,12 @@
-import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
-import { IAboutConfig } from "@Redux/Interfaces/IPageConfigs";
+import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
+import { IAboutConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
-import { AboutPage } from "@Redux/Pages";
+import { AboutPage } from "@Redux/ContentConfigs";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 
-class AboutComponent extends BaseConfigurablePage<IAboutConfig> {
+class AboutComponent extends BaseConfigurableComponent<IAboutConfig> {
     constructor(props: any) {
         super(props);
 

@@ -1,13 +1,13 @@
-import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
-import { SoundCloudComponent } from "@Components/SoundCloud";
-import { ISoundCloudConfig } from "@Redux/Interfaces/IPageConfigs";
+import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
+import { SoundCloudComponent } from "@Components/Pages/Aux/SoundCloud";
+import { ISoundCloudConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
-import { ListenPage } from "@Redux/Pages";
+import { ListenPage } from "@Redux/ContentConfigs";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 
-class ListenComponent extends BaseConfigurablePage<ISoundCloudConfig> {
+class ListenComponent extends BaseConfigurableComponent<ISoundCloudConfig> {
     constructor(props: any) {
         super(props);
 

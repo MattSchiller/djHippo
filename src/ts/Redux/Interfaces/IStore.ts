@@ -1,4 +1,4 @@
-import { IPageConfig, IAboutConfig } from "@Redux/Interfaces/IPageConfigs";
+import { IContentConfig } from "@Redux/Interfaces/IContentConfig";
 
 export interface IStore extends IActivePageProps {
     pages: IPage[];
@@ -13,10 +13,12 @@ interface IBasePage {
     title: string;
 }
 
-export interface IRawPage extends IBasePage {
+export interface IConfig {
     configUrl?: string;
 }
 
+export interface IRawPage extends IBasePage, IConfig { }
+
 export interface IPage extends IBasePage {
-    fetchedConfig?: Promise<IPageConfig>
+    fetchedConfig?: Promise<IContentConfig>
 }

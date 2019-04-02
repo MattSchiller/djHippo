@@ -7,7 +7,7 @@ interface IPageContentWrapper extends IActivePageProps {
     wrappedPageId: string;
 }
 
-class PageContentWrapper extends React.PureComponent<IPageContentWrapper> {
+class WrapWithSpinnerComponent extends React.PureComponent<IPageContentWrapper> {
     public render() {
         const className = this.props.activePageId === this.props.wrappedPageId
             ? ""
@@ -27,6 +27,6 @@ function mapStateToProps(state: IStore): IActivePageProps {
     };
 }
 
-const ConnectedPageContentWrapper = connect(mapStateToProps)(PageContentWrapper);
-export { ConnectedPageContentWrapper as PageContentWrapper };
+const ConnectedWrapWithSpinnerComponent = connect(mapStateToProps)(WrapWithSpinnerComponent);
+export { ConnectedWrapWithSpinnerComponent as WrapWithSpinnerComponent };
 
