@@ -33,7 +33,6 @@ class ListenComponent extends React.PureComponent<IPage, ISoundCloudConfig> {
                     { this.state.trackIds.map(trackId => <SoundCloudComponent key={ trackId } trackId={ trackId } />) }
                 </div>
             </PageContentWrapper>
-
         );
     }
 }

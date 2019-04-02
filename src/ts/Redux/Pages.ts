@@ -11,3 +11,9 @@ export const ListenPage: IRawPage = {
     title: "Listen",
     configUrl: "configs/soundcloud.yaml",
 }
+
+export const ContactPage: IRawPage = {
+    pageId: "contact",
+    title: "Contact",
+    configUrl: "configs/contact.yaml",
+}

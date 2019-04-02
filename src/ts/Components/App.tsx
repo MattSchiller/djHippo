@@ -6,6 +6,7 @@ import { Actions } from "@Redux/Actions";
 import { getPages, isValidPageId } from "@Redux/Store";
 import { Location } from "history";
 import React from "react";
+import { ContactComponent } from "@Components/Pages/ContactPage";
 
 export class App extends React.PureComponent {
     public componentWillMount() {
@@ -37,6 +38,7 @@ export class App extends React.PureComponent {
                 <Menu />
                 <AboutComponent />
                 <ListenComponent />
+                <ContactComponent />
             </div>
         );
     }

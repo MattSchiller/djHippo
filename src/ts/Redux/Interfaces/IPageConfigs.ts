@@ -1,4 +1,4 @@
-export type IPageConfig = IAboutConfig | ISoundCloudConfig;
+export type IPageConfig = IAboutConfig | ISoundCloudConfig | IContactConfig;
 
 export interface IAboutConfig {
     imageSrc: string;
@@ -7,4 +7,13 @@ export interface IAboutConfig {
 
 export interface ISoundCloudConfig {
     trackIds: string[];
+}
+
+export interface IContactConfig {
+    contactEmails: IContactEmail[];
+}
+
+export interface IContactEmail {
+    label: string;
+    email: string;
 }
