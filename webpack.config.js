@@ -99,8 +99,7 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 hash: true,
                 filename: "index.html",
-                template: __dirname + "/src/html/index.html",
-                favicon: __dirname + "/assets/images/favicon.ico"
+                template: __dirname + "/src/html/index.html"
             }),
 
             // Ignore the changes in any auto-created d.ts files for TypeScript (like typings-for-css-loader makes).
