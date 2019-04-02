@@ -20,3 +20,13 @@
 
 .contact-page {
 }
+
+.upcoming-events-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.upcoming-event {
+    display: flex;
+    flex-direction: row;
+}

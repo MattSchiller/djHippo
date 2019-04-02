@@ -1,4 +1,4 @@
-export type IPageConfig = IAboutConfig | ISoundCloudConfig | IContactConfig;
+export type IPageConfig = IAboutConfig | ISoundCloudConfig | IContactConfig | IUpcomingEventsConfig;
 
 export interface IAboutConfig {
     imageSrc: string;
@@ -16,4 +16,15 @@ export interface IContactConfig {
 export interface IContactEmail {
     label: string;
     email: string;
+}
+
+export interface IUpcomingEventsConfig {
+    events: IUpcomingEvent[];
+}
+
+export interface IUpcomingEvent {
+    date: string;
+    name: string;
+    location: string;
+    tickets: string;
 }

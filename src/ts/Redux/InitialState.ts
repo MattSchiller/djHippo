@@ -1,7 +1,7 @@
-import { IPage, IStore, IRawPage } from "@Redux/Interfaces/IStore";
-import { IPageConfig } from "@Redux/Interfaces/IPageConfigs";
-import { AboutPage, ListenPage, ContactPage } from "@Redux/Pages";
 import { typedFetch } from "@Helpers/Fetch";
+import { IPageConfig } from "@Redux/Interfaces/IPageConfigs";
+import { IPage, IRawPage, IStore } from "@Redux/Interfaces/IStore";
+import { AboutPage, ContactPage, ListenPage, UpcomingEventsPage } from "@Redux/Pages";
 
 export const initialState = getInitialState();
 
@@ -10,6 +10,7 @@ function getInitialState(): IStore {
         initializePage(AboutPage),
         initializePage(ListenPage),
         initializePage(ContactPage),
+        initializePage(UpcomingEventsPage),
     ];
 
     const activePageId: string = pages[0].pageId;

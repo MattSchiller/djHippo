@@ -1,5 +1,4 @@
-import { PageContentWrapper } from "@Components/Pages/PageContentWrapper";
-import { Spinner } from "@Components/Spinner";
+import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
 import { IContactConfig, IContactEmail } from "@Redux/Interfaces/IPageConfigs";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
 import { ContactPage } from "@Redux/Pages";
@@ -7,7 +6,7 @@ import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 
-class ContactComponent extends React.PureComponent<IPage, IContactConfig> {
+class ContactComponent extends BaseConfigurablePage<IContactConfig> {
     constructor(props: any) {
         super(props);
 
@@ -16,29 +15,15 @@ class ContactComponent extends React.PureComponent<IPage, IContactConfig> {
         };
     }
 
-    public componentWillMount() {
-        if (!this.props.fetchedConfig) return;
-
-        this.props.fetchedConfig
-            .then(contactConfig => {
-                console.log(contactConfig)
-                this.setState({ ...contactConfig as IContactConfig });
-            });
+    protected _renderCondition(): boolean {
+        return this.state.contactEmails.length !== 0;
     }
 
-    public render() {
+    protected _render() {
         return (
-            <PageContentWrapper wrappedPageId={ this.props.pageId }>
-                {
-                    this.state.contactEmails.length === 0
-                        ? <Spinner />
-                        : (
-                            <div className={ CSS.contactPage }>
-                                { this.state.contactEmails.map(this._renderContactLink) }
-                            </div>
-                        )
-                }
-            </PageContentWrapper>
+            <div className={ CSS.contactPage }>
+                { this.state.contactEmails.map(this._renderContactLink) }
+            </div>
         );
     }
 

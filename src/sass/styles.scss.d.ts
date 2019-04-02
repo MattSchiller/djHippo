@@ -8,3 +8,5 @@ export const ldsEllipsis3: string;
 export const spinner: string;
 export const aboutPage: string;
 export const listenPage: string;
+export const upcomingEventsPage: string;
+export const upcomingEvent: string;

@@ -1,14 +1,13 @@
-import { Spinner } from "@Components/Spinner";
-import { AboutPage, ListenPage } from "@Redux/Pages";
+import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
+import { SoundCloudComponent } from "@Components/SoundCloud";
 import { ISoundCloudConfig } from "@Redux/Interfaces/IPageConfigs";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
+import { ListenPage } from "@Redux/Pages";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { SoundCloudComponent } from "@Components/SoundCloud";
-import { PageContentWrapper } from "@Components/Pages/PageContentWrapper";
 
-class ListenComponent extends React.PureComponent<IPage, ISoundCloudConfig> {
+class ListenComponent extends BaseConfigurablePage<ISoundCloudConfig> {
     constructor(props: any) {
         super(props);
 
@@ -17,22 +16,11 @@ class ListenComponent extends React.PureComponent<IPage, ISoundCloudConfig> {
         };
     }
 
-    public componentWillMount() {
-        if (!this.props.fetchedConfig) return;
-
-        this.props.fetchedConfig
-            .then(soundCloudConfig => {
-                this.setState({ ...soundCloudConfig as ISoundCloudConfig });
-            });
-    }
-
-    public render() {
+    protected _render() {
         return (
-            <PageContentWrapper wrappedPageId={ ListenPage.pageId }>
-                <div className={ CSS.listenPage }>
-                    { this.state.trackIds.map(trackId => <SoundCloudComponent key={ trackId } trackId={ trackId } />) }
-                </div>
-            </PageContentWrapper>
+            <div className={ CSS.listenPage }>
+                { this.state.trackIds.map(trackId => <SoundCloudComponent key={ trackId } trackId={ trackId } />) }
+            </div>
         );
     }
 }
@@ -43,3 +31,4 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedAboutPage = connect(mapStateToProps)(ListenComponent);
 export { ConnectedAboutPage as ListenComponent };
+

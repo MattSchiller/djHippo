@@ -1,13 +1,12 @@
-import CSS from "@Sass/styles.scss";
-import { Spinner } from "@Components/Spinner";
+import { BaseConfigurablePage } from "@Components/Pages/BaseConfigurablePage";
 import { IAboutConfig } from "@Redux/Interfaces/IPageConfigs";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
+import { AboutPage } from "@Redux/Pages";
+import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { AboutPage } from "@Redux/Pages";
-import { PageContentWrapper } from "@Components/Pages/PageContentWrapper";
 
-class AboutComponent extends React.PureComponent<IPage, IAboutConfig> {
+class AboutComponent extends BaseConfigurablePage<IAboutConfig> {
     constructor(props: any) {
         super(props);
 
@@ -17,29 +16,16 @@ class AboutComponent extends React.PureComponent<IPage, IAboutConfig> {
         };
     }
 
-    public componentWillMount() {
-        if (!this.props.fetchedConfig) return;
-
-        this.props.fetchedConfig
-            .then(aboutConfig => {
-                this.setState({ ...aboutConfig as IAboutConfig });
-            });
+    protected _renderCondition(): boolean {
+        return this.state.textContent !== "";
     }
 
-    public render() {
+    protected _render() {
         return (
-            <PageContentWrapper wrappedPageId={ this.props.pageId }>
-                {
-                    this.state.textContent === ""
-                        ? <Spinner />
-                        : (
-                            <div className={ CSS.aboutPage }>
-                                <img src={ this.state.imageSrc } />
-                                { this.state.textContent }
-                            </div>
-                        )
-                }
-            </PageContentWrapper>
+            <div className={ CSS.aboutPage }>
+                <img src={ this.state.imageSrc } />
+                { this.state.textContent }
+            </div>
         );
     }
 }
@@ -50,3 +36,4 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedAboutPage = connect(mapStateToProps)(AboutComponent);
 export { ConnectedAboutPage as AboutComponent };
+

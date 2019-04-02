@@ -7,6 +7,7 @@ import { getPages, isValidPageId } from "@Redux/Store";
 import { Location } from "history";
 import React from "react";
 import { ContactComponent } from "@Components/Pages/ContactPage";
+import { UpcomingEventsComponent } from "@Components/Pages/UpcomingEventsPage";
 
 export class App extends React.PureComponent {
     public componentWillMount() {
@@ -39,6 +40,7 @@ export class App extends React.PureComponent {
                 <AboutComponent />
                 <ListenComponent />
                 <ContactComponent />
+                <UpcomingEventsComponent />
             </div>
         );
     }

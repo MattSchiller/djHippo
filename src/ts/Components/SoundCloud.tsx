@@ -32,7 +32,6 @@ export class SoundCloudComponent extends React.PureComponent<ISoundCloudComponen
                     scrolling={ "no" }
                     allow={ "autoplay" }
                     frameBorder={ "0" }
-                    height={ "250px" }
                     onLoad={ this.onLoad }
                     src={ `${soundCloudUrlPrefix}${this.props.trackId}${soundCloudUrlSuffix}` }
                 />
