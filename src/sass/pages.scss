@@ -73,11 +73,57 @@
 .upcoming-events-page {
     display: flex;
     flex-direction: column;
-}
+    align-items: center;
 
-.upcoming-event {
-    display: flex;
-    flex-direction: row;
+    margin: 1rem;
+
+    .upcoming-event {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        color: $color-theme-hover;
+
+        width: 100%;
+        margin: 1rem;
+
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .event-sub-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+        }
+
+        .upcoming-event-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            a {
+                margin-top: 0.5rem;
+
+                & button {
+                    font-size: 1.1rem;
+                    width: 5rem;
+                    color: $color-theme-hover;
+                    border: solid 2px $color-theme-hover;
+                    background-color: transparent;
+
+                    &:hover {
+                        color: $color-theme-hover;
+                        border: solid 2px $color-theme-hover;
+                    }
+                }
+            }
+
+        }
+    }
 }
 
 .social {

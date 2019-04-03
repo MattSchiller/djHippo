@@ -1,10 +1,12 @@
 import { MenuItem } from "@Components/MenuItem";
-import { IPage, IStore, IActivePageProps } from "@Redux/Interfaces/IStore";
+import { headerLogoUrl } from "@Helpers/Constants";
+import { historyPush } from "@Helpers/History";
+import { AboutPage } from "@Redux/ContentConfigs";
+import { IActivePageProps, IPage, IStore } from "@Redux/Interfaces/IStore";
+import { getActivePageId, getPages } from "@Redux/Store";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { getActivePageId, getPages } from "@Redux/Store";
-import { headerLogoUrl } from "@Helpers/Constants";
 
 interface IMenuProps extends IActivePageProps {
     items: IPage[];
@@ -14,7 +16,7 @@ class Menu extends React.PureComponent<IMenuProps> {
     public render() {
         return (
             <nav>
-                <img src={ headerLogoUrl } />
+                <img src={ headerLogoUrl } onClick={ () => historyPush(AboutPage.pageId) } />
                 <div className={ CSS.tabs }>
                     { this.props.items.map(this._renderMenuItem, this) }
                 </div>
@@ -42,3 +44,4 @@ function mapStateToProps(state: IStore) {
 
 const ConnectedMenu = connect(mapStateToProps)(Menu);
 export { ConnectedMenu as Menu };
+

@@ -1,6 +1,7 @@
 $color-theme-primary: black;
 $color-theme-secondary: rgb(153, 153, 153);
 $color-theme-hover: white;
+$color-divider: $color-theme-secondary;
 
 $menu-image-height: 3rem;
 $menu-image-padding: 1rem;
@@ -17,4 +18,4 @@ $content-padding: 0.5rem;
 
 $content-height: calc(100vh - #{$menu-total-height} - #{$social-height} - #{$social-margin * 3.5} - #{$content-padding});
 
-$image-full-width: calc(100vw - #{$content-padding * 4})
+$image-full-width: calc(100vw - #{$content-padding * 4});

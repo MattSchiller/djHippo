@@ -5,3 +5,27 @@ export const soundCloudUrlSuffix: string = "&color=%239d06c4&auto_play=false&hid
     "&show_user=true&show_reposts=false&show_teaser=true";
 
 export const headerLogoUrl: string = "assets/images/DJHippo_Logo_white.png";
+
+export const monthNames: string[] = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+];
+
+interface IDateSuffices {
+    [key: string]: string
+}
+
+export const dateSuffices: IDateSuffices = {
+    1: "st",
+    2: "nd",
+    3: "rd",
+    4: "th",
+    5: "th",
+    6: "th",
+    7: "th",
+    8: "th",
+    9: "th",
+    0: "th",
+}

@@ -1,6 +1,6 @@
+import { historyPush } from "@Helpers/History";
 import { IPage } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
-import { history } from "@Helpers/History";
 import React from "react";
 
 interface IMenuItemProps extends IPage {
@@ -21,5 +21,5 @@ export class MenuItem extends React.PureComponent<IMenuItemProps> {
 
     private _getClassName = () => this.props.isSelected ? CSS.selected : "";
 
-    private _onClick = () => history.push(this.props.pageId);
+    private _onClick = () => historyPush(this.props.pageId);
 }

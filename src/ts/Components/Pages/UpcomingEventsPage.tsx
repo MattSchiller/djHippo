@@ -5,6 +5,8 @@ import { IPage, IStore } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
+import { Divider } from "@Components/Pages/Aux/Divider";
+import { monthNames, dateSuffices } from "@Helpers/Constants";
 
 class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsConfig> {
     constructor(props: any) {
@@ -27,16 +29,30 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
         );
     }
 
-    private _renderEvent = (event: IUpcomingEvent) => {
-        return (
+    private _renderEvent = (event: IUpcomingEvent, index: number, eventsArray: IUpcomingEvent[]) => {
+        return [
+            this._renderDivider(index === 0),
             <div className={ CSS.upcomingEvent }>
-                { event.date }
-                { event.name }
-                { event.location }
-                { this._renderButton(event.event, "Event") }
-                { this._renderButton(event.tickets, "Tickets") }
+                { this._renderEventInfo(event) }
+                <div className={ CSS.upcomingEventButtons }>
+                    { this._renderButton(event.event, "Event") }
+                    { this._renderButton(event.tickets, "Tickets") }
+                </div>
+            </div>,
+            this._renderDivider(index !== eventsArray.length)
+        ];
+    }
+
+    private _renderEventInfo = (event: IUpcomingEvent) => {
+        return (
+            <div className={ CSS.eventInfo }>
+                <div>{ parseDate(event.date.toString()) }</div>
+                <div className={ CSS.eventSubInfo }>
+                    <div>{ event.name }</div>
+                    <div>{ event.location }</div>
+                </div>
             </div>
-        );
+        )
     }
 
     private _renderButton = (link: string | undefined, caption: string | undefined) => {
@@ -50,8 +66,19 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                 </button>
             </a>
         );
-
     }
+
+    private _renderDivider = (shouldRender: boolean) => {
+        return shouldRender ? <Divider /> : null;
+    }
+}
+
+function parseDate(date: string): string {
+    // const year: string = date.substr(0, 4);
+    const month: number = Number(date.substr(4, 2));
+    const day: string = date.substr(6, 2);
+
+    return `${monthNames[month - 1]} ${day + dateSuffices[day.substr(-1, 1)]}`;
 }
 
 function mapStateToProps(state: IStore): IPage {

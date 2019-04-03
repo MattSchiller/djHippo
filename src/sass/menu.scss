@@ -6,6 +6,7 @@ nav {
     align-items: center;
 
     img {
+        cursor: pointer;
         height: $menu-image-height;
         padding: $menu-image-padding;
     }
