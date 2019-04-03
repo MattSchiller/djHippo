@@ -26,7 +26,8 @@ export interface IUpcomingEvent {
     date: string;
     name: string;
     location: string;
-    tickets: string;
+    event?: string;
+    tickets?: string;
 }
 
 export interface ISocialsConfig {

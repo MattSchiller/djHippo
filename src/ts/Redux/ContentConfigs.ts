@@ -19,7 +19,7 @@ export const ContactPage: IRawPage = {
 }
 
 export const UpcomingEventsPage: IRawPage = {
-    pageId: "upcoming",
+    pageId: "events",
     title: "Upcoming Events",
     configUrl: "configs/upcomingEvents.yaml",
 }

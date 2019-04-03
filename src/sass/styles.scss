@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,800');
 @import "variables";
 @import "utility";
 @import "mediaQueries";
@@ -6,7 +7,7 @@
 @import "pages";
 
 html {
-    font-family: Inconsolata, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 500;
 
     @include media-tablet-landscape-and-larger {
