@@ -2,9 +2,9 @@
 
 .content {
     white-space: pre-line;
-    overflow-y: scroll;
     height: $content-height;
-    margin: $content-margin;
+    padding: $content-padding;
+    overflow-y: scroll;
 }
 
 .about-page {
@@ -14,9 +14,10 @@
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+
     img {
-        width: 100%;
+        width: $image-full-width;
         margin-bottom: 0.5rem;
     }
 }
@@ -24,7 +25,6 @@
 .listen-page {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     height: 100vh;
 
     iframe, .spinner {

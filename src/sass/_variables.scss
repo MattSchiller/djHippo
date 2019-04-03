@@ -8,12 +8,13 @@ $menu-text-size: 1rem;
 $menu-text-padding: 0.5rem;
 
 $menu-total-height: $menu-image-height + ($menu-image-padding * 2) +
-    $menu-text-size + ($menu-text-padding *2);
-
+    $menu-text-size + ($menu-text-padding * 2);
 
 $social-height: 2.5rem;
 $social-margin: $social-height / 8;
 
-$content-margin: 0.5rem;
+$content-padding: 0.5rem;
 
-$content-height: calc(100vh - #{$menu-total-height} - #{$social-height} - #{$social-margin * 3.5} - #{$content-margin});
+$content-height: calc(100vh - #{$menu-total-height} - #{$social-height} - #{$social-margin * 3.5} - #{$content-padding});
+
+$image-full-width: calc(100vw - #{$content-padding * 4})

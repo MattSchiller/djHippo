@@ -1,12 +1,10 @@
-import { WrapWithSpinnerComponent } from "@Components/Pages/Aux/WrapWithSpinnerComponent";
-import { Spinner } from "@Components/Pages/Aux/Spinner";
-import { IAboutConfig, IUpcomingEventsConfig, IUpcomingEvent } from "@Redux/Interfaces/IContentConfig";
-import { IPage, IStore } from "@Redux/Interfaces/IStore";
+import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
 import { UpcomingEventsPage } from "@Redux/ContentConfigs";
+import { IUpcomingEvent, IUpcomingEventsConfig } from "@Redux/Interfaces/IContentConfig";
+import { IPage, IStore } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
 
 class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsConfig> {
     constructor(props: any) {
@@ -23,21 +21,36 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
 
     protected _render() {
         return (
-            <div className={ CSS.aboutPage }>
+            <div className={ CSS.upcomingEventsPage }>
                 { this.state.events.map(this._renderEvent) }
             </div>
         );
     }
 
-    private _renderEvent(event: IUpcomingEvent): JSX.Element {
+    private _renderEvent = (event: IUpcomingEvent) => {
         return (
             <div className={ CSS.upcomingEvent }>
                 { event.date }
                 { event.name }
                 { event.location }
-                { event.tickets }
+                { this._renderButton(event.event, "Event") }
+                { this._renderButton(event.tickets, "Tickets") }
             </div>
         );
+    }
+
+    private _renderButton = (link: string | undefined, caption: string | undefined) => {
+        if (!link)
+            return null;
+
+        return (
+            <a href={ link } target={ "_blank" }>
+                <button>
+                    { caption }
+                </button>
+            </a>
+        );
+
     }
 }
 
