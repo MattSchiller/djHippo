@@ -10,6 +10,8 @@ export const content: string;
 export const aboutPage: string;
 export const listenPage: string;
 export const contactPage: string;
+export const contactSection: string;
+export const contactLabel: string;
 export const upcomingEventsPage: string;
 export const upcomingEvent: string;
 export const social: string;

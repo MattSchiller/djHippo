@@ -37,7 +37,37 @@
 }
 
 .contact-page {
-    background-color: green;
+    background-color: darken($color-theme-secondary, 50%);
+
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        margin-top: 1rem;
+        margin-left: 4rem;
+        margin-right: 4rem;
+
+        padding: 2rem;
+        font-size: 1.2rem;
+
+        border-top: solid $color-theme-secondary 1px;
+        color: $color-theme-hover;
+
+        &:nth-child(1) {
+            border: none;
+        }
+
+        a {
+            color: darken($color-theme-hover, 20%);
+        }
+    }
+
+    .contact-label {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 .upcoming-events-page {

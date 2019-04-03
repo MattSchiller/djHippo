@@ -29,8 +29,13 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
 
     private _renderContactLink(contactEmail: IContactEmail): JSX.Element {
         return (
-            <div key={ contactEmail.label }>
-                { contactEmail.label }{ `: ` }
+            <div
+                key={ contactEmail.label }
+                className={ CSS.contactSection }
+            >
+                <div className={ CSS.contactLabel } >
+                    { contactEmail.label }
+                </div>
                 <a href={ `mailto:${contactEmail.email}` } target={ "_blank" } >
                     { contactEmail.email }
                 </a>
