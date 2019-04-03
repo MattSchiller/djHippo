@@ -1,5 +1,16 @@
 @import "variables";
 
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        height: $menu-image-height;
+        padding: $menu-image-padding;
+    }
+}
+
 .tabs {
     color: $color-theme-secondary;
     background-color: $color-theme-primary;
@@ -9,18 +20,20 @@
     list-style: none;
     justify-content: space-evenly;
 
+    width: 100%;
+
     li {
         cursor: pointer;
-        font-weight: 800;
-        padding: 0.5em;
+        padding: $menu-text-padding;
+        font-size: $menu-text-size;
 
         &:hover {
-            color: pink;
+            color: $color-theme-hover;
         }
     }
 }
 
 .selected {
-    background-color: $color-theme-secondary;
-    color: $color-theme-primary;
+    font-weight: 800;
+    color: $color-theme-hover;
 }

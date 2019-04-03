@@ -5,13 +5,15 @@ import { connect } from "react-redux";
 
 interface IPageContentWrapper extends IActivePageProps {
     wrappedPageId: string;
+    className?: string;
 }
 
 class WrapWithSpinnerComponent extends React.PureComponent<IPageContentWrapper> {
     public render() {
-        const className = this.props.activePageId === this.props.wrappedPageId
-            ? ""
-            : CSS.hidden;
+        const className = `${this.props.className}
+            ${this.props.activePageId === this.props.wrappedPageId
+                ? ""
+                : CSS.hidden}`;
 
         return (
             <div className={ className } >

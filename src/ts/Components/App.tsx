@@ -1,14 +1,14 @@
 import { Menu } from "@Components/Menu";
 import { AboutComponent } from "@Components/Pages/AboutPage";
+import { ContactComponent } from "@Components/Pages/ContactPage";
 import { ListenComponent } from "@Components/Pages/ListenPage";
+import { UpcomingEventsComponent } from "@Components/Pages/UpcomingEventsPage";
+import { SocialComponent } from "@Components/Social";
 import { getTrimmedPath as getPageIdFromPath, history } from "@Helpers/History";
 import { Actions } from "@Redux/Actions";
 import { getPages, isValidPageId } from "@Redux/Store";
 import { Location } from "history";
 import React from "react";
-import { ContactComponent } from "@Components/Pages/ContactPage";
-import { UpcomingEventsComponent } from "@Components/Pages/UpcomingEventsPage";
-import { SocialComponent } from "@Components/Social";
 
 export class App extends React.PureComponent {
     public componentWillMount() {
@@ -35,16 +35,14 @@ export class App extends React.PureComponent {
     }
 
     public render() {
-        return (
-            <div >
-                <Menu />
-                <AboutComponent />
-                <ListenComponent />
-                <ContactComponent />
-                <UpcomingEventsComponent />
-                <SocialComponent />
-            </div>
-        );
+        return [
+            <Menu />,
+            <AboutComponent />,
+            <ListenComponent />,
+            <ContactComponent />,
+            <UpcomingEventsComponent />,
+            <SocialComponent />
+        ];
     }
 }
 

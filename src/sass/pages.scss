@@ -1,5 +1,24 @@
-.about-page {
+@import "variables";
+
+.content {
     white-space: pre-line;
+    overflow-y: scroll;
+    height: $content-height;
+    margin: $content-margin;
+}
+
+.about-page {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 0.85rem;
+    img {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
 }
 
 .listen-page {
@@ -8,13 +27,12 @@
     overflow-y: scroll;
     height: 100vh;
 
-    background-color: purple;
-
     iframe, .spinner {
         width: 100%;
         height: 160px;
 
         border: 1px solid black;
+        margin-bottom: 0.5em;
     }
 }
 
@@ -33,20 +51,25 @@
 }
 
 .social {
+    background-color: pink;
+
+    z-index: 10;
+
     position: fixed;
-    bottom: 0;
+    width: 100%;
+    transform: translateX(-50%);
     left: 50%;
     right: 50%;
-    margin: auto;
-    transform: translateX(-50%);
-    width: 50%;
-
+    bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 
     img {
-        width: 3em;
-        height: 3em;
+        width: $social-height;
+        height: $social-height;
+
+        margin-top: $social-margin;
+        margin-bottom: $social-margin;
     }
 }

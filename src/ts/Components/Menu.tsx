@@ -4,6 +4,7 @@ import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 import { getActivePageId, getPages } from "@Redux/Store";
+import { headerLogoUrl } from "@Helpers/Constants";
 
 interface IMenuProps extends IActivePageProps {
     items: IPage[];
@@ -12,8 +13,11 @@ interface IMenuProps extends IActivePageProps {
 class Menu extends React.PureComponent<IMenuProps> {
     public render() {
         return (
-            <nav className={ CSS.tabs }>
-                { this.props.items.map(this._renderMenuItem, this) }
+            <nav>
+                <img src={ headerLogoUrl } />
+                <div className={ CSS.tabs }>
+                    { this.props.items.map(this._renderMenuItem, this) }
+                </div>
             </nav>
         );
     }

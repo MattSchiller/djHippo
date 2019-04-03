@@ -10,6 +10,11 @@ html {
     font-family: Montserrat, sans-serif;
     font-weight: 500;
 
+    height: 100vh;
+
+    background-color: $color-theme-primary;
+    color: $color-theme-secondary;
+
     @include media-tablet-landscape-and-larger {
         font-size: 1em;
     }
@@ -18,4 +23,10 @@ html {
 body {
     overflow-y: hidden;
     margin: 0 !important;
+
+    height: 100%;
+}
+
+#renderTarget {
+    height: 100%;
 }
