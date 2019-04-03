@@ -4,7 +4,7 @@
     white-space: pre-line;
     height: $content-height;
     padding: $content-padding;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .about-page {
@@ -12,6 +12,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    margin: 0 0.5rem;
 
     font-size: 0.9rem;
     color: $color-theme-hover;
@@ -25,7 +27,6 @@
 .listen-page {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 
     iframe, .spinner {
         width: 100%;
@@ -35,6 +36,10 @@
 }
 
 .contact-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     .contact-section {
         display: flex;
         flex-direction: column;
@@ -48,7 +53,6 @@
         padding: 2rem;
         font-size: 1.2rem;
 
-        border-top: solid $color-theme-secondary 1px;
         color: $color-theme-hover;
 
         &:nth-child(1) {
@@ -123,16 +127,7 @@
 }
 
 .social {
-    background-color: pink;
-
-    z-index: 10;
-
-    position: fixed;
     width: 100%;
-    transform: translateX(-50%);
-    left: 50%;
-    right: 50%;
-    bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

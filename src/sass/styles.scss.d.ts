@@ -1,4 +1,5 @@
 export const hidden: string;
+export const halfWidth: string;
 export const tabs: string;
 export const selected: string;
 export const ldsEllipsis: string;

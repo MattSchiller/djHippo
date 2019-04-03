@@ -17,7 +17,6 @@ export class BaseConfigurableComponent<T> extends React.PureComponent<IPage, T> 
     public render() {
         return (
             <WrapWithSpinnerComponent
-                className={ CSS.content }
                 wrappedPageId={ this.props.pageId }
             >
                 {

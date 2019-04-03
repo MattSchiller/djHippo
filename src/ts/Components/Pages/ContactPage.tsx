@@ -5,6 +5,7 @@ import { ContactPage } from "@Redux/ContentConfigs";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
+import { Divider } from "@Components/Pages/Aux/Divider";
 
 class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
     constructor(props: any) {
@@ -27,8 +28,13 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
         );
     }
 
-    private _renderContactLink(contactEmail: IContactEmail): JSX.Element {
-        return (
+    private _renderContactLink(
+        contactEmail: IContactEmail,
+        index: number,
+        contactsArray: IContactEmail[]
+    ): (JSX.Element | null)[] {
+        return [
+            index === 0 ? <Divider className={ CSS.halfWidth } /> : null,
             <div
                 key={ contactEmail.label }
                 className={ CSS.contactSection }
@@ -39,8 +45,9 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
                 <a href={ `mailto:${contactEmail.email}` } target={ "_blank" } >
                     { contactEmail.email }
                 </a>
-            </div>
-        );
+            </div>,
+            index !== contactsArray.length ? <Divider className={ CSS.halfWidth } /> : null
+        ];
     }
 }
 
@@ -50,4 +57,3 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedContactPage = connect(mapStateToProps)(ContactComponent);
 export { ConnectedContactPage as ContactComponent };
-

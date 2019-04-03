@@ -1,12 +1,12 @@
 import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
+import { Divider } from "@Components/Pages/Aux/Divider";
+import { dateSuffices, monthNames } from "@Helpers/Constants";
 import { UpcomingEventsPage } from "@Redux/ContentConfigs";
 import { IUpcomingEvent, IUpcomingEventsConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
-import { Divider } from "@Components/Pages/Aux/Divider";
-import { monthNames, dateSuffices } from "@Helpers/Constants";
 
 class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsConfig> {
     constructor(props: any) {
@@ -31,7 +31,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
 
     private _renderEvent = (event: IUpcomingEvent, index: number, eventsArray: IUpcomingEvent[]) => {
         return [
-            this._renderDivider(index === 0),
+            index === 0 ? <Divider /> : null,
             <div className={ CSS.upcomingEvent }>
                 { this._renderEventInfo(event) }
                 <div className={ CSS.upcomingEventButtons }>
@@ -39,7 +39,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                     { this._renderButton(event.tickets, "Tickets") }
                 </div>
             </div>,
-            this._renderDivider(index !== eventsArray.length)
+            index !== eventsArray.length ? <Divider /> : null
         ];
     }
 
@@ -66,10 +66,6 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                 </button>
             </a>
         );
-    }
-
-    private _renderDivider = (shouldRender: boolean) => {
-        return shouldRender ? <Divider /> : null;
     }
 }
 

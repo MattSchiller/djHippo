@@ -1,4 +1,4 @@
-import { Menu, homePageId } from "@Components/Menu";
+import { homePageId, Menu } from "@Components/Menu";
 import { AboutComponent } from "@Components/Pages/AboutPage";
 import { ContactComponent } from "@Components/Pages/ContactPage";
 import { ListenComponent } from "@Components/Pages/ListenPage";
@@ -6,7 +6,8 @@ import { UpcomingEventsComponent } from "@Components/Pages/UpcomingEventsPage";
 import { SocialComponent } from "@Components/Social";
 import { getTrimmedPath as getPageIdFromPath, history } from "@Helpers/History";
 import { Actions } from "@Redux/Actions";
-import { getPages, isValidPageId } from "@Redux/Store";
+import { isValidPageId } from "@Redux/Store";
+import CSS from "@Sass/styles.scss";
 import { Location } from "history";
 import React from "react";
 
@@ -37,10 +38,12 @@ export class App extends React.PureComponent {
     public render() {
         return [
             <Menu />,
-            <AboutComponent />,
-            <ListenComponent />,
-            <ContactComponent />,
-            <UpcomingEventsComponent />,
+            <div className={ CSS.content } >
+                <AboutComponent />
+                <ListenComponent />
+                <ContactComponent />
+                <UpcomingEventsComponent />
+            </div>,
             <SocialComponent />
         ];
     }
