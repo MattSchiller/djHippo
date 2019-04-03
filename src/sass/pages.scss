@@ -8,13 +8,13 @@
 }
 
 .about-page {
-    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
     font-size: 0.9rem;
+    color: $color-theme-hover;
 
     img {
         width: $image-full-width;
@@ -30,15 +30,11 @@
     iframe, .spinner {
         width: 100%;
         height: 160px;
-
-        border: 1px solid black;
         margin-bottom: 0.5em;
     }
 }
 
 .contact-page {
-    background-color: darken($color-theme-secondary, 50%);
-
     .contact-section {
         display: flex;
         flex-direction: column;
@@ -142,6 +138,9 @@
     justify-content: space-evenly;
 
     img {
+        cursor: pointer;
+        filter: invert(95%) sepia(0%) saturate(7493%) hue-rotate(178deg) brightness(106%) contrast(101%);
+
         width: $social-height;
         height: $social-height;
 

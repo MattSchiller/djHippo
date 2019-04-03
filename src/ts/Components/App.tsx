@@ -1,4 +1,4 @@
-import { Menu } from "@Components/Menu";
+import { Menu, homePageId } from "@Components/Menu";
 import { AboutComponent } from "@Components/Pages/AboutPage";
 import { ContactComponent } from "@Components/Pages/ContactPage";
 import { ListenComponent } from "@Components/Pages/ListenPage";
@@ -31,7 +31,7 @@ export class App extends React.PureComponent {
         if (isValidPageId(inboundPageId))
             Actions.setActivePage({ pageId: inboundPageId });
         else
-            history.replace(`/${getPages()[0].pageId}`);
+            history.replace(`/${homePageId}`);
     }
 
     public render() {

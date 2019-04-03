@@ -7,8 +7,8 @@ export const initialState = getInitialState();
 
 function getInitialState(): IStore {
     const pages: IPage[] = [
-        initializePage(AboutPage),
         initializePage(ListenPage),
+        initializePage(AboutPage),
         initializePage(ContactPage),
         initializePage(UpcomingEventsPage),
     ];

@@ -1,9 +1,9 @@
 socials:
-  - icon: assets/images/facebook.png
+  - icon: assets/images/facebook.svg
     link: https://www.facebook.com/djhippobassmusic/
-  - icon: assets/images/instagram.png
+  - icon: assets/images/instagram.svg
     link: https://www.instagram.com/dj_hippo_/
-  - icon: assets/images/twitter.png
+  - icon: assets/images/twitter.svg
     link: https://twitter.com/__djhippo__
-  - icon: assets/images/soundcloud.png
+  - icon: assets/images/soundcloud.svg
     link: https://soundcloud.com/dj_hippo
