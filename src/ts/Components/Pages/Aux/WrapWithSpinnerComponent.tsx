@@ -30,4 +30,3 @@ function mapStateToProps(state: IStore): IActivePageProps {
 
 const ConnectedWrapWithSpinnerComponent = connect(mapStateToProps)(WrapWithSpinnerComponent);
 export { ConnectedWrapWithSpinnerComponent as WrapWithSpinnerComponent };
-

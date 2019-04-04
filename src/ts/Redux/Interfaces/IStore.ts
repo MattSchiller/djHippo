@@ -20,5 +20,5 @@ export interface IConfig {
 export interface IRawPage extends IBasePage, IConfig { }
 
 export interface IPage extends IBasePage {
-    fetchedConfig?: Promise<IContentConfig>
+    fetchedConfig?: Promise<IContentConfig>;
 }

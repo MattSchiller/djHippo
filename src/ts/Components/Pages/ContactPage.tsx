@@ -23,29 +23,31 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
     protected _render() {
         return (
             <div className={ CSS.contactPage }>
-                { this.state.contactEmails.map(this._renderContactLink) }
+                { this.state.contactEmails.map(this._renderContact) }
             </div>
         );
     }
 
-    private _renderContactLink(
+    private _renderContact(
         contactEmail: IContactEmail,
         index: number,
         contactsArray: IContactEmail[]
-    ): (JSX.Element | null)[] {
+    ): Array<JSX.Element | null> {
         return [
             index === 0 ? <Divider className={ CSS.halfWidth } /> : null,
-            <div
-                key={ contactEmail.label }
-                className={ CSS.contactSection }
-            >
-                <div className={ CSS.contactLabel } >
-                    { contactEmail.label }
+            (
+                <div
+                    key={ contactEmail.label }
+                    className={ CSS.contactSection }
+                >
+                    <div className={ CSS.contactLabel } >
+                        { contactEmail.label }
+                    </div>
+                    <a href={ `mailto:${contactEmail.email}` } target={ "_blank" } >
+                        { contactEmail.email }
+                    </a>
                 </div>
-                <a href={ `mailto:${contactEmail.email}` } target={ "_blank" } >
-                    { contactEmail.email }
-                </a>
-            </div>,
+            ),
             index !== contactsArray.length ? <Divider className={ CSS.halfWidth } /> : null
         ];
     }

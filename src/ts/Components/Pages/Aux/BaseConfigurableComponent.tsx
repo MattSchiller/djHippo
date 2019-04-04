@@ -19,13 +19,15 @@ export class BaseConfigurableComponent<T> extends React.PureComponent<IPage, T> 
             <WrapWithSpinnerComponent
                 wrappedPageId={ this.props.pageId }
             >
-                {
-                    this._renderCondition()
-                        ? this._render()
-                        : <Spinner />
-                }
+                { this._renderContent() }
             </WrapWithSpinnerComponent>
         );
+    }
+
+    private _renderContent(): JSX.Element {
+        return this._renderCondition()
+            ? this._render()
+            : <Spinner />;
     }
 
     protected _renderCondition(): boolean {

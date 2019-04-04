@@ -17,13 +17,11 @@ export class SocialComponent extends React.PureComponent<{}, ISocialsConfig> {
         const configUrl: string | undefined = Socials.configUrl;
         const fetchedConfig = configUrl ? typedFetch<ISocialsConfig>(configUrl) : undefined;
 
-        console.log("fetchedConfig:", fetchedConfig)
-        if (!fetchedConfig) return;
-
-        fetchedConfig
-            .then(socialConfig => {
-                this.setState({ ...socialConfig });
-            });
+        if (fetchedConfig)
+            fetchedConfig
+                .then(socialConfig => {
+                    this.setState({ ...socialConfig });
+                });
     }
 
     public render() {

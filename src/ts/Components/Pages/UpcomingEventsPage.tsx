@@ -32,15 +32,17 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
 
     private _renderEvent = (event: IUpcomingEvent, index: number, eventsArray: IUpcomingEvent[]) => {
         return [
-            index === 0 ? <Divider /> : null,
-            <div className={ CSS.upcomingEvent }>
-                { this._renderEventInfo(event) }
-                <div className={ CSS.upcomingEventButtons }>
-                    { this._renderButton(event.event, "Event") }
-                    { this._renderButton(event.tickets, "Tickets") }
+            index === 0 ? <Divider key={ "startingDiv" } /> : null,
+            (
+                <div key={ "event" } className={ CSS.upcomingEvent }>
+                    { this._renderEventInfo(event) }
+                    <div className={ CSS.upcomingEventButtons }>
+                        { this._renderButton(event.event, "Event") }
+                        { this._renderButton(event.tickets, "Tickets") }
+                    </div>
                 </div>
-            </div>,
-            <Divider />
+            ),
+            <Divider key={ "closingDiv" } />
         ];
     }
 
@@ -53,7 +55,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                     <div>{ event.location }</div>
                 </div>
             </div>
-        )
+        );
     }
 
     private _renderButton = (link: string | undefined, caption: string | undefined) => {
@@ -92,4 +94,3 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedUpcomingEventsPage = connect(mapStateToProps)(UpcomingEventsComponent);
 export { ConnectedUpcomingEventsPage as UpcomingEventsComponent };
-

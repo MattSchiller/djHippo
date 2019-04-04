@@ -14,7 +14,7 @@ export const monthNames: string[] = [
 ];
 
 interface IDateSuffices {
-    [key: string]: string
+    [key: string]: string;
 }
 
 export const dateSuffices: IDateSuffices = {
@@ -28,4 +28,4 @@ export const dateSuffices: IDateSuffices = {
     8: "th",
     9: "th",
     0: "th",
-}
+};

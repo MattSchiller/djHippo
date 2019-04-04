@@ -38,4 +38,3 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedAboutPage = connect(mapStateToProps)(AboutComponent);
 export { ConnectedAboutPage as AboutComponent };
-

@@ -18,7 +18,7 @@ class Menu extends React.PureComponent<IMenuProps> {
     public render() {
         return (
             <nav>
-                <img src={ headerLogoUrl } onClick={ () => historyPush(homePageId) } />
+                <img src={ headerLogoUrl } onClick={ navigateToHomePage } />
                 <div className={ CSS.tabs }>
                     { this.props.items.map(this._renderMenuItem, this) }
                 </div>
@@ -37,6 +37,10 @@ class Menu extends React.PureComponent<IMenuProps> {
     }
 }
 
+function navigateToHomePage() {
+    historyPush(homePageId);
+}
+
 function mapStateToProps(state: IStore) {
     return {
         items: getPages(),
@@ -46,4 +50,3 @@ function mapStateToProps(state: IStore) {
 
 const ConnectedMenu = connect(mapStateToProps)(Menu);
 export { ConnectedMenu as Menu };
-

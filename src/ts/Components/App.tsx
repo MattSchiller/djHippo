@@ -37,15 +37,16 @@ export class App extends React.PureComponent {
 
     public render() {
         return [
-            <Menu />,
-            <div className={ CSS.content } >
-                <AboutComponent />
-                <ListenComponent />
-                <ContactComponent />
-                <UpcomingEventsComponent />
-            </div>,
-            <SocialComponent />
+            <Menu key={ "menu" } />,
+            (
+                <div key={ "content" } className={ CSS.content } >
+                    <AboutComponent />
+                    <ListenComponent />
+                    <ContactComponent />
+                    <UpcomingEventsComponent />
+                </div>
+            ),
+            <SocialComponent key={ "social" } />
         ];
     }
 }
-

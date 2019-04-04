@@ -20,24 +20,25 @@ export class SoundCloudComponent extends React.PureComponent<ISoundCloudComponen
         };
     }
 
-    render() {
+    public render() {
         const spinnerClass: string = !this.state.isLoaded ? "" : CSS.hidden;
         const iFrameClass: string = this.state.isLoaded ? "" : CSS.hidden;
 
         return [
-            <Spinner className={ spinnerClass } />,
+            <Spinner key={ "spinner" } className={ spinnerClass } />,
             (
                 <iframe
+                    key={ "iframe" }
                     className={ iFrameClass }
                     scrolling={ "no" }
                     allow={ "autoplay" }
                     frameBorder={ "0" }
-                    onLoad={ this.onLoad }
+                    onLoad={ this._onLoad }
                     src={ `${soundCloudUrlPrefix}${this.props.trackId}${soundCloudUrlSuffix}` }
                 />
             )
         ];
     }
 
-    onLoad = () => this.setState({ isLoaded: true });
+    private _onLoad = () => this.setState({ isLoaded: true });
 }

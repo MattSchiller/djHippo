@@ -31,4 +31,3 @@ function mapStateToProps(state: IStore): IPage {
 
 const ConnectedAboutPage = connect(mapStateToProps)(ListenComponent);
 export { ConnectedAboutPage as ListenComponent };
-

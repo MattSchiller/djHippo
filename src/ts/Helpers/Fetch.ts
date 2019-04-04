@@ -8,5 +8,5 @@ export function typedFetch<T>(...args: any): Promise<T> {
             });
 
             // TODO: UNHAPPY PATH
-        })
+        });
 }
