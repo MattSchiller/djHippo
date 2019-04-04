@@ -23,7 +23,7 @@ function getInitialState(): IStore {
 
 function initializePage(rawPage: IRawPage): IPage {
     const configUrl: string | undefined = rawPage.configUrl;
-    const fetchedConfig = configUrl ? typedFetch<IContentConfig>(configUrl) : undefined;
+    const fetchedConfig = configUrl ? typedFetch<IContentConfig>(`${configUrl}?${performance.now()}`) : undefined;
 
     return {
         ...rawPage,

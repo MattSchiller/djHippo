@@ -27,8 +27,17 @@ body {
 
     height: 100%;
     background-image: url("https://i.imgur.com/lShzsIG.png");
+
+    @include media-tablet {
+        background-size: cover;
+    }
 }
 
 #renderTarget {
     height: 100%;
+
+    @include media-tablet-portrait-and-larger {
+        max-width: 40em;
+        margin: auto;
+    }
 }

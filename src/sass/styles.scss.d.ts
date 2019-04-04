@@ -19,5 +19,6 @@ export const upcomingEvent: string;
 export const eventInfo: string;
 export const eventSubInfo: string;
 export const upcomingEventButtons: string;
+export const eventsTba: string;
 export const social: string;
 export const renderTarget: string;

@@ -24,7 +24,9 @@ class AboutComponent extends BaseConfigurableComponent<IAboutConfig> {
         return (
             <div className={ CSS.aboutPage }>
                 <img src={ this.state.imageSrc } />
-                { this.state.textContent }
+                <div>
+                    { this.state.textContent }
+                </div>
             </div>
         );
     }

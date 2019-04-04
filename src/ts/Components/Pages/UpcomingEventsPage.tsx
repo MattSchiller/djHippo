@@ -25,6 +25,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
         return (
             <div className={ CSS.upcomingEventsPage }>
                 { this.state.events.map(this._renderEvent) }
+                { this._renderTBA() }
             </div>
         );
     }
@@ -39,7 +40,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                     { this._renderButton(event.tickets, "Tickets") }
                 </div>
             </div>,
-            index !== eventsArray.length ? <Divider /> : null
+            <Divider />
         ];
     }
 
@@ -65,6 +66,14 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
                     { caption }
                 </button>
             </a>
+        );
+    }
+
+    private _renderTBA = () => {
+        return (
+            <div className={ CSS.eventsTba }>
+                MORE SHOWS TBA
+            </div>
         );
     }
 }
