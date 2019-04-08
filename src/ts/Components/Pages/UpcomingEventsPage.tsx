@@ -4,6 +4,7 @@ import { dateSuffices, monthNames } from "@Helpers/Constants";
 import { UpcomingEventsPage } from "@Redux/ContentConfigs";
 import { IUpcomingEvent, IUpcomingEventsConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
+import { getPageFromPageId } from "@Redux/Store";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
@@ -30,9 +31,9 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
         );
     }
 
-    private _renderEvent = (event: IUpcomingEvent, index: number, eventsArray: IUpcomingEvent[]) => {
+    private _renderEvent = (event: IUpcomingEvent, index: number) => {
         return [
-            index === 0 ? <Divider key={ "startingDiv" } /> : null,
+            (index === 0 && <Divider key={ "startingDiv" } />),
             (
                 <div key={ "event" } className={ CSS.upcomingEvent }>
                     { this._renderEventInfo(event) }
@@ -59,10 +60,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
     }
 
     private _renderButton = (link: string | undefined, caption: string | undefined) => {
-        if (!link)
-            return null;
-
-        return (
+        return (link &&
             <a href={ link } target={ "_blank" }>
                 <button>
                     { caption }
@@ -89,7 +87,7 @@ function parseDate(date: string): string {
 }
 
 function mapStateToProps(state: IStore): IPage {
-    return state.pages.filter(page => page.pageId === UpcomingEventsPage.pageId)[0];
+    return getPageFromPageId(UpcomingEventsPage.pageId);
 }
 
 const ConnectedUpcomingEventsPage = connect(mapStateToProps)(UpcomingEventsComponent);

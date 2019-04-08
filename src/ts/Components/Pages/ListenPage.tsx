@@ -6,6 +6,7 @@ import { ListenPage } from "@Redux/ContentConfigs";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
+import { getPageFromPageId } from "@Redux/Store";
 
 class ListenComponent extends BaseConfigurableComponent<ISoundCloudConfig> {
     constructor(props: any) {
@@ -26,7 +27,7 @@ class ListenComponent extends BaseConfigurableComponent<ISoundCloudConfig> {
 }
 
 function mapStateToProps(state: IStore): IPage {
-    return state.pages.filter(page => page.pageId === ListenPage.pageId)[0];
+    return getPageFromPageId(ListenPage.pageId);
 }
 
 const ConnectedAboutPage = connect(mapStateToProps)(ListenComponent);

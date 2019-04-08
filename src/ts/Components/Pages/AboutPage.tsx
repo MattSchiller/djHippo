@@ -1,7 +1,8 @@
 import { BaseConfigurableComponent } from "@Components/Pages/Aux/BaseConfigurableComponent";
+import { AboutPage } from "@Redux/ContentConfigs";
 import { IAboutConfig } from "@Redux/Interfaces/IContentConfig";
 import { IPage, IStore } from "@Redux/Interfaces/IStore";
-import { AboutPage } from "@Redux/ContentConfigs";
+import { getPageFromPageId } from "@Redux/Store";
 import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
@@ -33,7 +34,7 @@ class AboutComponent extends BaseConfigurableComponent<IAboutConfig> {
 }
 
 function mapStateToProps(state: IStore): IPage {
-    return state.pages.filter(page => page.pageId === AboutPage.pageId)[0];
+    return getPageFromPageId(AboutPage.pageId);
 }
 
 const ConnectedAboutPage = connect(mapStateToProps)(AboutComponent);

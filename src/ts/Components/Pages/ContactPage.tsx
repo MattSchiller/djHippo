@@ -6,6 +6,7 @@ import CSS from "@Sass/styles.scss";
 import React from "react";
 import { connect } from "react-redux";
 import { Divider } from "@Components/Pages/Aux/Divider";
+import { getPageFromPageId } from "@Redux/Store";
 
 class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
     constructor(props: any) {
@@ -32,9 +33,9 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
         contactEmail: IContactEmail,
         index: number,
         contactsArray: IContactEmail[]
-    ): Array<JSX.Element | null> {
+    ): Array<JSX.Element | false> {
         return [
-            index === 0 ? <Divider className={ CSS.halfWidth } /> : null,
+            index === 0 && <Divider className={ CSS.halfWidth } />,
             (
                 <div
                     key={ contactEmail.label }
@@ -48,13 +49,13 @@ class ContactComponent extends BaseConfigurableComponent<IContactConfig> {
                     </a>
                 </div>
             ),
-            index !== contactsArray.length ? <Divider className={ CSS.halfWidth } /> : null
+            (index !== contactsArray.length && <Divider className={ CSS.halfWidth } />)
         ];
     }
 }
 
 function mapStateToProps(state: IStore): IPage {
-    return state.pages.filter(page => page.pageId === ContactPage.pageId)[0];
+    return getPageFromPageId(ContactPage.pageId);
 }
 
 const ConnectedContactPage = connect(mapStateToProps)(ContactComponent);

@@ -41,7 +41,7 @@ function navigateToHomePage() {
     historyPush(homePageId);
 }
 
-function mapStateToProps(state: IStore) {
+function mapStateToProps(state: IStore): IMenuProps {
     return {
         items: getPages(),
         activePageId: getActivePageId(),
