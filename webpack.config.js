@@ -79,7 +79,7 @@ module.exports = (env, argv) => {
             ]
         },
 
-        devtool: "eval-source-map",
+        devtool: getMode(argv) === "production" ? "source-map" : "eval-source-map",
 
         devServer: {
             headers: { "Access-Control-Allow-Origin": "*" },
