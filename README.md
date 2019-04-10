@@ -13,4 +13,4 @@ For content updates, this should be driven by changes to the files in the `/conf
 For build/css updates, use the `scripts/sync-build.sh` command.
 
 Both of these require the login for the hosted site, but can be "upgraded" to use rsa keys. These keys *SHOULD NEVER BE COMMITTED TO THIS REPO*, but you should feel free to sync them to the hosted server. To add your key to the server (and therefor not need to keep entering a password in manually), generate a key and use the command
->`~/.ssh/id_rsa.pub | ssh username@your-domain.com 'cat - >> ~/.ssh/authorized_keys'`
+>`cat ~/.ssh/id_rsa.pub | ssh djhippo@[host-gator-ip] 'cat - >> ~/.ssh/authorized_keys'`

@@ -34,7 +34,7 @@ class UpcomingEventsComponent extends BaseConfigurableComponent<IUpcomingEventsC
     private _renderEvent = (event: IUpcomingEvent, index: number) => {
         return [
             (index === 0 && <Divider key={ "startingDiv" } />),
-            (
+            (event &&
                 <div key={ "event" } className={ CSS.upcomingEvent }>
                     { this._renderEventInfo(event) }
                     <div className={ CSS.upcomingEventButtons }>
